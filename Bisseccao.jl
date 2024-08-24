@@ -22,4 +22,8 @@ if f(a) * f(b) < 0
         end
     end
     println("O valor aproximado da raiz é = ", m)
+else
+    println("Não existe raiz")
 end
+
+
