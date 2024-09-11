@@ -2,7 +2,7 @@ def f(x):
     return (x + 1) * (x - 1) * (x - 3)
 
 def falsa_posicao(a, b, fa, fb):
-    return (a*f(b) - b*f(a))/(f(b)-f(a))
+    return (a*fb - b*fa)/(fb-fa)
 
 a = -4
 b = 4
