@@ -1,5 +1,5 @@
 function f(x)
-    return (x + 1) * (x - 1) * (x - 3)
+    return (x+1)*(x-1)*(x-3)
 end
 
 a = -4
@@ -32,5 +32,5 @@ end
 
 intervalos = [(-4, 0), (0, 2), (2, 4)] #para multipla raizes
 for (a, b) in intervalos
-    metodoBisseccao(a, b, 0.01)
+   metodoBisseccao(a, b, 0.01)
 end
