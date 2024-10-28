@@ -29,12 +29,13 @@ def gauss_jordan(A, b):
     return b
 
 
-A = np.array([[1, -2, 3],
-               [-1, 3, 0],
-               [2, -5, 5]], dtype=float)
-b = np.array([9, -4, 17], dtype=float)
+A = np.array([[25, 5, 1],
+               [64, 8, 1],
+               [144, 12, 1]], dtype=float)
+b = np.array([106.8, 177.2, 279.2], dtype=float)
 
 
 x = gauss_jordan(A, b)
 print(A)
+print(b)
 print("Solução do sistema:", x)
