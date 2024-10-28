@@ -2,26 +2,35 @@ import numpy as np
 
 def eliminacao_gaussiana(A, b):
     n = len(b)
-    
-    # Eliminação para triangular a matriz
-    for i in range(n):
-        # Pivô: Verificação se A[i][i] é zero (para evitar divisão por zero)
-        if A[i][i] == 0:
-            raise ValueError("Elemento de pivô é zero. Reordene as linhas da matriz.")
 
-        # Normalizando a linha i
+    # Eliminação
+    for i in range(n-1):
+        if A[i,i] == 0:
+            for t in range(i+1,n):
+                if A[t,i] != 0:
+                    # Trocar linha
+                    A[[i,t]] = A[[t,i]]
+                    b[[i,t]] = b[[t,i]]
+                    break
+            else:
+                raise ValueError("Sistema sem solução única (troca de linha falhou)")
+            
+        # Prosseguir com a eliminação   
         for j in range(i+1, n):
-            fator = A[j][i] / A[i][i]
-            for k in range(i, n):
-                A[j][k] -= fator * A[i][k]
-            b[j] -= fator * b[i]
-
-    # Substituição regressiva para encontrar as soluções
+            m = A[j, i] / A[i, i]
+            A[j, i:] = A[j, i:] - m * A[i, i:]
+            b[j] = b[j] - m * b[i]
+               
+    # Solução do sistema por substituição retroativa
     x = np.zeros(n)
-    for i in range(n-1, -1, -1):
-        soma = sum(A[i][j] * x[j] for j in range(i+1, n))
-        x[i] = (b[i] - soma) / A[i][i]
-    
+    x[n-1] = b[n-1] / A[n-1,n-1]
+
+    for i in range(n-2,-1,-1):
+        x[i] = b[i]
+        for j in range(i+1,n):
+            x[i] = x[i] - A[i,j] * x[j]
+        x[i] = x[i] / A[i,i]
+
     return x
 
 def achar_polinomio_interpolador(x_values, y_values):
