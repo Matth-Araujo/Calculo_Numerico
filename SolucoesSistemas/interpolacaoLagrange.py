@@ -12,18 +12,18 @@ def lagrange_interpolation_polynomial(x_points, y_points):
     """
     import sympy as sp
     
-    # Variável simbólica
+   
     x = sp.symbols('x')
     
-    # Número de pontos
+    
     n = len(x_points)
     
-    # Inicia o polinômio de Lagrange
+    # inicia o polinômio de Lagrange
     polynomial = 0
     
-    # Constrói o polinômio
+    #polinômio
     for i in range(n):
-        # Calcula L_i(x)
+        
         L_i = 1
         for j in range(n):
             if i != j:
@@ -37,8 +37,8 @@ def lagrange_interpolation_polynomial(x_points, y_points):
     return polynomial
 
 # Pontos de entrada
-x_points = [1.1, 2.2, 3.5]
-y_points = [10, 29, 90]
+x_points = [1, 2, 3, 4]
+y_points = [5.69, 11.1, 16.39, 21.61]
 
 # Calcula o polinômio interpolador de Lagrange
 polynomial = lagrange_interpolation_polynomial(x_points, y_points)
